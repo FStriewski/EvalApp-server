@@ -9,33 +9,32 @@ beforeAll(async () => {
     await setupDb()
 })
 
-describe('EvaluationController', () => {
+describe('StudentController', () => {
 
-    test(' GET /evaluation', async () => {
+    test(' GET /student', async () => {
         await request(await app.callback())
-            .get('/evaluation')
+            .get('/student')
             .set('Accept', 'application/json')
             .expect(200)
     })
 
-    test('GET /evaluation/1', async () => {
-        const parameter = 0;
+    test('GET /student/1', async () => {
+        const parameter = 1;
         const response = await request(await app.callback())
-            .get('/evaluation/' + parameter)
+            .get('/student/' + parameter)
             .set('Accept', 'application/json')
             .expect(200)
     })
 
-    test('POST /evaluation', async () => {
+    test('POST /student', async () => {
 
         const target = {
-            grade: "green",
-            remark: "wat a bright student, should be a teacher",
-            date: '2017-06-01',
+            name: "Tim Smart",
+            link: "https://www.apfeltalk.de/magazin/wp-content/uploads/2017/09/Tim-Cook_1000x571-700x400.jpg",
         }
 
         const response = await request(await app.callback())
-            .post('/evaluation')
+            .post('/student')
             .send(target)
             .expect(200)
     })

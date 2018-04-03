@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn } from 'typeorm'
 import { IsString, IsDate } from 'class-validator'
 import Teacher from '../teacher/entity'
 import Student from '../student/entity'
@@ -21,8 +21,8 @@ export default class Evaluation extends BaseEntity {
 
     // Needs a proper default date date.now()
     @IsDate()
-    @Column( { default: 'date' })
-    date: Date 
+    @CreateDateColumn()
+    createdDate: Date;
 
     @ManyToOne(_ => Teacher, teacher => teacher.evaluations)
     teacher: Teacher

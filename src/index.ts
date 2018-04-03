@@ -1,7 +1,7 @@
 import app from './app'
 import setupDb from './db'
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 6000
 
 
 setupDb()

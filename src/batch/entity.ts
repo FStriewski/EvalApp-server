@@ -1,5 +1,5 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
-import { IsNumber, IsDate } from 'class-validator'
+import { IsNumber,  IsDateString } from 'class-validator'
 import Student from '../student/entity'
 
 
@@ -14,11 +14,11 @@ export default class Batch extends BaseEntity {
     number: number
 
     // Needs proper dates 
-    @IsDate()
+    @IsDateString()
     @Column('date', { nullable: false })
     startdate: Date
 
-    @IsDate()
+    @IsDateString()
     @Column('date', { nullable: true })
     enddate: Date
 

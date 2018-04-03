@@ -5,11 +5,11 @@ import Evaluation from './entity'
 @JsonController()
 export default class EvaluationController {
 
-    @Get('/evaluations')
+    @Get('/evaluation')
     async getAllEvaluations() {
         return await Evaluation.find()
     }
-    @Get('/evaluations/:id([0-9]+)')
+    @Get('/evaluation/:id([0-9]+)')
     async getSingleEvaluation(
         @Param("id") id: number
     ) {
@@ -19,7 +19,7 @@ export default class EvaluationController {
     }
 
     // Needs user connection
-    @Post('/evaluations')
+    @Post('/evaluation')
     async createEvaluation(
         @Body() body: Evaluation
     ) {
@@ -28,7 +28,7 @@ export default class EvaluationController {
     }
 
 
-    @Put('/evaluations/:id([0-9]+)')
+    @Put('/evaluation/:id([0-9]+)')
     async updateEvaluation(
         @Param("id") id: number,
         @Body() update: Evaluation

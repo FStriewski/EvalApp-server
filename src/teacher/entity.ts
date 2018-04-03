@@ -1,8 +1,8 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
 import { Exclude } from 'class-transformer'
 import { MinLength, IsString, IsEmail } from 'class-validator'
-import * as bcrypt from 'bcrypt'
-import Evaluation from '../evaluations/entity'
+//import * as bcrypt from 'bcrypt'
+import Evaluation from '../evaluation/entity'
 
 
 @Entity()

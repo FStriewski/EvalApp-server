@@ -7,12 +7,22 @@ beforeAll(async () => {
   await setupDb()
 })
 
-describe('UserController', () => {
-  test('/users', async () => {
-    await request(await app.callback())
-    .get('/users')
-    .set('Accept', 'application/json')
-    .set('x-user-roles', 'teacher')
-    .expect(200)
+// Requires a teacher in the db
+
+describe('TeacherController', () => {
+
+  test('POST /teachers', async () => {
+
+    const target = {
+      email: "tim@teacher.tt",
+      password: "12345678"
+    }
+
+    const response = await request(await app.callback())
+      .post('/teachers')
+      .set('Accept', 'application/json')
+      .send(target)
+      .expect(200)
   })
+
 })

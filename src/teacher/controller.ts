@@ -11,11 +11,11 @@ class AuthenticatePayload {
     password: string
 }
 
-// this makes sure a class is marked as controller that always returns JSON
+
 @JsonController()
 export default class TeacherController {
 
-    @Post('/logins')
+    @Post('/teachers')
     async authenticate(
         @Body() { email, password }: AuthenticatePayload
     ) {

@@ -4,6 +4,12 @@ import { DefaultNamingStrategy } from 'typeorm/naming-strategy/DefaultNamingStra
 import { NamingStrategyInterface } from 'typeorm/naming-strategy/NamingStrategyInterface'
 import { snakeCase } from 'typeorm/util/StringUtils'
 
+import Student from './student/entity'
+import Evaluation from './evaluation/entity'
+import Teacher from './teacher/entity'
+import Batch from './batch/entity'
+
+
 class CustomNamingStrategy extends DefaultNamingStrategy implements NamingStrategyInterface {
 
   tableName(targetName: string, userSpecifiedName: string): string {
@@ -28,7 +34,10 @@ export default () =>
     type: "postgres",
     url: process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres',
     entities: [
-      //...
+      Student,
+      Teacher,
+      Evaluation,
+      Batch, 
     ],
     synchronize: true,
     logging: true,

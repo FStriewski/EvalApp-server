@@ -19,10 +19,14 @@ export default class Evaluation extends BaseEntity {
     @Column('text')
     remark: string
 
-    // Needs a proper default date date.now()
-    @IsDateString()
-    @CreateDateColumn()
-    createdDate: Date;
+    //Needs a proper default date date.now()
+    // @IsDateString()
+    // @CreateDateColumn()
+    // createdDate: Date;
+
+    @IsString()
+    @Column('text')
+    date: string
 
     @ManyToOne(_ => Teacher, teacher => teacher.evaluations)
     teacher: Teacher

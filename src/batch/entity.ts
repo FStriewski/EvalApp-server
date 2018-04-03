@@ -22,7 +22,7 @@ export default class Batch extends BaseEntity {
     @Column('text', { nullable: true })
     enddate: string
 
-    @OneToMany(_ => Student, student => student.batch)
+    @OneToMany(_ => Student, student => student.batch, { eager: true } )
     students: Student[]
 
 

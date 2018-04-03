@@ -26,7 +26,7 @@ describe('EvaluationController', () => {
             .expect(200)
     })
 
-    test('POST /evaluation', async () => {
+    test('POST /students/1/evaluation', async () => {
 
         const target = {
             grade: "green",
@@ -35,7 +35,7 @@ describe('EvaluationController', () => {
         }
 
         const response = await request(await app.callback())
-            .post('/evaluation')
+            .post('/students/1/evaluation')
             .send(target)
             .expect(200)
     })

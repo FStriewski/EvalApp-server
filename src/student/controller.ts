@@ -46,5 +46,15 @@ export default class StudentController {
         return Student.merge(student, update).save()
     }
 
+    // @Delete('/students/:id([0-9]+)')
+    //     deleteStudent(
+    //         @Param("id") id: number
+    //     ) {
+    //         console.log("Deleting...")
+    //         if (!id) throw new NotFoundError("Student not found")
+    //         return Student.removeById(id)
+
+    //     }
+
 
 }

@@ -31,7 +31,7 @@ describe('BatchController', () => {
         const target = {
             number: 1,
             startdate: '2017-03-01',
-            enddate: '2017-06-01',
+            enddate: '2017-06-01'
         }
 
         const response = await request(await app.callback())

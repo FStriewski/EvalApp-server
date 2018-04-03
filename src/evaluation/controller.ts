@@ -32,7 +32,7 @@ export default class EvaluationController {
     @Put('/evaluation/:id([0-9]+)')
     async updateEvaluation(
         @Param("id") id: number,
-        @Body() update: Evaluation
+        @Body() update: Partial<Evaluation>
     ) {
         const evaluation = await Evaluation.findOneById(id)
         if (!evaluation) throw new NotFoundError("Evaluation not found")

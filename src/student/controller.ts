@@ -38,7 +38,7 @@ export default class StudentController {
     @Put('/students/:id([0-9]+)')
     async updateStudent(
         @Param("id") id: number,
-        @Body() update: Student
+        @Body() update: Partial<Student>
     ) {
         const student = await Student.findOneById(id)
         if (!student) throw new NotFoundError("Student not found")

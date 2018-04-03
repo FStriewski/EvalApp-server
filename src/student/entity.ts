@@ -19,7 +19,7 @@ export default class Student extends BaseEntity {
     @Column('text', { nullable: true })
     link: string
 
-    @OneToMany(_ => Evaluation, evaluation => evaluation.student)
+    @OneToMany(_ => Evaluation, evaluation => evaluation.student, { eager: true })
     evaluations: Evaluation[]
 
     @ManyToOne(_ => Batch, batch => batch.students)

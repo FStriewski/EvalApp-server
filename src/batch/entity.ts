@@ -1,5 +1,5 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
-import { IsNumber, IsDate } from 'class-validator'
+import { IsNumber,  IsString, IsDate } from 'class-validator'
 import Student from '../student/entity'
 
 
@@ -13,16 +13,16 @@ export default class Batch extends BaseEntity {
     @Column('integer', { nullable: false })
     number: number
 
-    // Needs proper dates 
-    @IsDate()
-    @Column('date', { nullable: false })
-    startdate: Date
+    // Needs proper dates later on
+    @IsString()
+    @Column('text', { nullable: false })
+    startdate: string
 
-    @IsDate()
-    @Column('date', { nullable: true })
-    enddate: Date
+    @IsString()
+    @Column('text', { nullable: true })
+    enddate: string
 
-    @OneToMany(_ => Student, student => student.evaluations)
+    @OneToMany(_ => Student, student => student.batch, { eager: true } )
     students: Student[]
 
 

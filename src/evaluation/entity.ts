@@ -1,5 +1,5 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn } from 'typeorm'
-import { IsString, IsDate } from 'class-validator'
+import { IsString, IsDate, IsDateString } from 'class-validator'
 import Teacher from '../teacher/entity'
 import Student from '../student/entity'
 
@@ -19,10 +19,14 @@ export default class Evaluation extends BaseEntity {
     @Column('text')
     remark: string
 
-    // Needs a proper default date date.now()
-    @IsDate()
-    @CreateDateColumn()
-    createdDate: Date;
+    //Needs a proper default date date.now()
+    // @IsDateString()
+    // @CreateDateColumn()
+    // createdDate: Date;
+
+    @IsString()
+    @Column('text')
+    date: string
 
     @ManyToOne(_ => Teacher, teacher => teacher.evaluations)
     teacher: Teacher

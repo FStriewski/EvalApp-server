@@ -1,7 +1,5 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
-import { Exclude } from 'class-transformer'
-import { MinLength, IsString, IsEmail, IsDate } from 'class-validator'
-import * as bcrypt from 'bcrypt'
+import { IsString, IsDate } from 'class-validator'
 import Teacher from '../teacher/entity'
 import Student from '../student/entity'
 
@@ -20,7 +18,6 @@ export default class Evaluation extends BaseEntity {
     @IsString()
     @Column('text')
     remark: string
-
 
     // Needs a proper default date date.now()
     @IsDate()

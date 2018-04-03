@@ -1,6 +1,5 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm'
-import { Exclude } from 'class-transformer'
-import { MinLength, IsString, IsEmail } from 'class-validator'
+import { IsString } from 'class-validator'
 //import * as bcrypt from 'bcrypt'
 import Evaluation from '../evaluation/entity'
 import Batch from '../batch/entity'
@@ -23,7 +22,7 @@ export default class Student extends BaseEntity {
     @OneToMany(_ => Evaluation, evaluation => evaluation.student)
     evaluations: Evaluation[]
 
-    @ManyToOne(_ => Batch, batch => batch.student)
+    @ManyToOne(_ => Batch, batch => batch.students)
     batch: Batch
 
 }

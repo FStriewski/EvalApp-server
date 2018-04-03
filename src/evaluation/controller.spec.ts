@@ -19,7 +19,7 @@ describe('EvaluationController', () => {
     })
 
     test('GET /evaluation/1', async () => {
-        const parameter = 0;
+        const parameter = 1;
         const response = await request(await app.callback())
             .get('/evaluation/' + parameter)
             .set('Accept', 'application/json')

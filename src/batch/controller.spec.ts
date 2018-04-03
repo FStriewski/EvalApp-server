@@ -40,4 +40,18 @@ describe('BatchController', () => {
             .expect(200)
     })
 
+    test('Put /batch/1', async () => {
+
+        const target = {
+            number: 1,
+            startdate: 'now',
+            enddate: 'sooooon'
+        }
+
+        const response = await request(await app.callback())
+            .put('/batch/1')
+            .send(target)
+            .expect(200)
+    })
+
 })

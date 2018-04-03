@@ -46,12 +46,17 @@ export default class StudentController {
         return Student.merge(student, update).save()
     }
 
-    // @Delete('/students/:id([0-9]+)')
-    //     deleteStudent(
-    //         @Param("id") id: number
+    // Needs fixing
+    // @Delete('/batch/:id([0-9]+)/students/:id2([0-9]+)')
+    //     async deleteStudent(
+    //         @Param("id") id: number,
+    //         @Param("id2") id2: number
     //     ) {
     //         console.log("Deleting...")
-    //         if (!id) throw new NotFoundError("Student not found")
+    //         const batch = await Batch.findOneById(id)
+    //         if (!id) throw new NotFoundError("Batch not found")
+
+
     //         return Student.removeById(id)
 
     //     }

@@ -26,7 +26,7 @@ describe('StudentController', () => {
             .expect(200)
     })
 
-    test('POST /students', async () => {
+    test('POST /batch/1/students', async () => {
 
         const target = {
             name: "Tim Smart",
@@ -35,6 +35,19 @@ describe('StudentController', () => {
 
         const response = await request(await app.callback())
             .post('/batch/1/students')
+            .send(target)
+            .expect(200)
+    })
+
+    test('Put /students/1', async () => {
+
+        const target = {
+            name: "Susi Super",
+            link: "IAmToShy.jpg"
+        }
+
+        const response = await request(await app.callback())
+            .put('/students/1')
             .send(target)
             .expect(200)
     })

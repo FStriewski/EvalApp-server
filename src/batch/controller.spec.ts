@@ -9,33 +9,33 @@ beforeAll(async () => {
     await setupDb()
 })
 
-describe('EvaluationController', () => {
+describe('BatchController', () => {
 
-    test(' GET /evaluation', async () => {
+    test(' GET /batch', async () => {
         await request(await app.callback())
-            .get('/evaluation')
+            .get('/batch')
             .set('Accept', 'application/json')
             .expect(200)
     })
 
-    test('GET /evaluation/1', async () => {
+    test('GET /batch/1', async () => {
         const parameter = 1;
         const response = await request(await app.callback())
-            .get('/evaluation/' + parameter)
+            .get('/batch/' + parameter)
             .set('Accept', 'application/json')
             .expect(200)
     })
 
-    test('POST /evaluation', async () => {
+    test('POST /batch', async () => {
 
         const target = {
-            grade: "green",
-            remark: "wat a bright student, should be a teacher",
-            date: '2017-06-01',
+            number: 1,
+            startdate: '2017-03-01',
+            enddate: '2017-06-01',
         }
 
         const response = await request(await app.callback())
-            .post('/evaluation')
+            .post('/batch')
             .send(target)
             .expect(200)
     })

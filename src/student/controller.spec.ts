@@ -11,22 +11,22 @@ beforeAll(async () => {
 
 describe('StudentController', () => {
 
-    test(' GET /student', async () => {
+    test(' GET /students', async () => {
         await request(await app.callback())
-            .get('/student')
+            .get('/students')
             .set('Accept', 'application/json')
             .expect(200)
     })
 
-    test('GET /student/1', async () => {
+    test('GET /students/1', async () => {
         const parameter = 1;
         const response = await request(await app.callback())
-            .get('/student/' + parameter)
+            .get('/students/' + parameter)
             .set('Accept', 'application/json')
             .expect(200)
     })
 
-    test('POST /student', async () => {
+    test('POST /students', async () => {
 
         const target = {
             name: "Tim Smart",
@@ -34,7 +34,7 @@ describe('StudentController', () => {
         }
 
         const response = await request(await app.callback())
-            .post('/student')
+            .post('/batch/1/students')
             .send(target)
             .expect(200)
     })

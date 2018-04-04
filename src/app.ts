@@ -4,6 +4,7 @@ import TeacherController from './teacher/controller'
 import EvaluationController from './evaluation/controller'
 import BatchController from './batch/controller'
 import StudentController from './student/controller'
+import LogInController from './login/controller'
 import Teacher from './teacher/entity'
 import { verify } from './jwt'
 
@@ -15,6 +16,7 @@ export default createKoaServer({
     EvaluationController,
     BatchController,
     StudentController,
+    LogInController,
    ],
   authorizationChecker: (action: Action) => {
     const header: string = action.request.headers.authorization

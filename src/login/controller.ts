@@ -11,7 +11,9 @@ class AuthenticatePayload {
     password: string
 }
 
-// this makes sure a class is marked as controller that always returns JSON
+
+// This is for logging in an existing teacher
+
 @JsonController()
 export default class LogInController {
 

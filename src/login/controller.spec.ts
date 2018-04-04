@@ -7,8 +7,8 @@ beforeAll(async () => {
     await setupDb()
 })
 
-// Requires a teacher in the db
-describe('TeacherController', () => {
+// This test keeps failing although it works fine with httpie
+describe('LogInController', () => {
 
     test('POST /login', async () => {
 

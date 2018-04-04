@@ -13,7 +13,7 @@ class AuthenticatePayload {
 
 // this makes sure a class is marked as controller that always returns JSON
 @JsonController()
-export default class TeacherController {
+export default class LogInController {
 
     @Post('/login')
     async authenticate(

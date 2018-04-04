@@ -1,34 +1,31 @@
-import { JsonController, Post, BadRequestError,  Body, Authorized } from 'routing-controllers'
+import { JsonController, Post, Param, Get, Body, Authorized } from 'routing-controllers'
 import Teacher from './entity';
-import { IsString } from 'class-validator'
-import { sign } from '../jwt'
 
-class AuthenticatePayload {
-    @IsString()
-    email: string
-
-    @IsString()
-    password: string
-}
-
-// this makes sure a class is marked as controller that always returns JSON
 @JsonController()
 export default class TeacherController {
 
-    @Post('/logins')
-    async authenticate(
-        @Body() { email, password }: AuthenticatePayload
+    @Post('/users')
+    async signup(
+        @Body() user: Teacher
     ) {
-        const teacher = await Teacher.findOne({ where: { email } })
+        const { password, ...rest } = user
+        const entity = Teacher.create(rest)
+        await entity.setPassword(password)
+        return entity.save()
+    }
 
-        if (!teacher) throw new BadRequestError('A user with this name does not exist')
+    @Authorized()
+    @Get('/users/:id([0-9]+)')
+    getUser(
+        @Param('id') id: number
+    ) {
+        return Teacher.findOneById(id)
+    }
 
-        if (!await teacher.checkPassword(password)) throw new BadRequestError('The password is not correct')
-
-        const jwt = sign({
-            id: teacher.id!
-        })
-        return { jwt }
-
+    @Authorized()
+    @Get('/users')
+    allUsers() {
+        return Teacher.find()
     }
 }
+

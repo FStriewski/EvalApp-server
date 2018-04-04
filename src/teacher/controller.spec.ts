@@ -10,7 +10,7 @@ beforeAll(async () => {
 // Requires a teacher in the db
 describe('TeacherController', () => {
 
-    test('POST /teachers', async () => {
+    test('POST /login', async () => {
 
         const target = {
             email: "tim@teacher.tt",
@@ -18,7 +18,7 @@ describe('TeacherController', () => {
         }
 
         const response = await request(await app.callback())
-            .post('/teachers')
+            .post('/login')
             .set('Accept', 'application/json')
             .send(target)
             .expect(200)

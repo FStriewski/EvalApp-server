@@ -25,10 +25,10 @@ export default class Teacher extends BaseEntity {
     evaluations: Evaluation[]
 
  
-//   async setPassword(rawPassword: string) {
-//     const hash = await bcrypt.hash(rawPassword, 10)
-//     this.password = hash
-// }
+  async setPassword(rawPassword: string) {
+    const hash = await bcrypt.hash(rawPassword, 10)
+    this.password = hash
+}
 
     checkPassword(rawPassword: string): Promise<boolean> {
         return bcrypt.compare(rawPassword, this.password)

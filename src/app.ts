@@ -8,9 +8,8 @@ import Teacher from './teacher/entity'
 import { verify } from './jwt'
 
 
-
-
 export default createKoaServer({
+  cors: true,
   controllers: [
     TeacherController,
     EvaluationController,

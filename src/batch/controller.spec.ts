@@ -40,6 +40,19 @@ describe('BatchController', () => {
             .expect(200)
     })
 
+    test('POST /batch/1', async () => {
+
+        const target = {
+            name: "Tim Smart",
+            link: "https://www.apfeltalk.de/magazin/wp-content/uploads/2017/09/Tim-Cook_1000x571-700x400.jpg",
+        }
+
+        const response = await request(await app.callback())
+            .post('/batch/1')
+            .send(target)
+            .expect(200)
+    })
+
     test('Put /batch/1', async () => {
 
         const target = {

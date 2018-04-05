@@ -19,22 +19,6 @@ export default class StudentController {
         return student
     }
 
-
-    @Post('/batch/:id([0-9]+)')
-    async createStudent(
-        @Param('id') batchId: number,
-        @Body() body: Student
-    ) {
-        const batch = await Batch.findOneById(batchId)
-        
-        const student = await Student.create({
-            ...body,
-            batch
-        }).save()
-        return student
-    }
-
-
     @Put('/students/:id([0-9]+)')
     async updateStudent(
         @Param("id") id: number,

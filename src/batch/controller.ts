@@ -20,27 +20,27 @@ export default class BatchController {
         // return batch
     }
 
-    // @Post('/batch')
-    // async createBatch(
-    //     @Body() body: Batch
+    @Post('/batch')
+    async createBatch(
+        @Body() body: Batch
+    ) {
+        const batch = await Batch.create(body).save()
+        return batch
+    }
+
+    // @Post('/batch/:id([0-9]+)')
+    // async createStudent(
+    //     @Param('id') batchId: number,
+    //     @Body() body: Student
     // ) {
-    //     const batch = await Batch.create(body).save()
+    //     const batch = await Batch.findOneById(batchId)
+
+    //     const student = await Student.create({
+    //         ...body,
+    //         batch
+    //     }).save()
     //     return batch
     // }
-
-    @Post('/batch/:id([0-9]+)')
-    async createStudent(
-        @Param('id') batchId: number,
-        @Body() body: Student
-    ) {
-        const batch = await Batch.findOneById(batchId)
-
-        const student = await Student.create({
-            ...body,
-            batch
-        }).save()
-        return student
-    }
 
     @Put('/batch/:id([0-9]+)')
     async updateBatch(

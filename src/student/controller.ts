@@ -30,6 +30,20 @@ export default class StudentController {
         return Student.merge(student, update).save()
     }
 
+    @Post('/batch/:id([0-9]+)/student')
+    async createStudent(
+        @Param('id') batchId: number,
+        @Body() body: Student
+    ) {
+        const batch = await Batch.findOneById(batchId)
+
+        const student = await Student.create({
+            ...body,
+            batch
+        }).save()
+        return batch
+    }
+
     // Needs fixing
     // @Delete('/batch/:id([0-9]+)/students/:id2([0-9]+)')
     //     async deleteStudent(

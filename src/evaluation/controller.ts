@@ -29,11 +29,11 @@ export default class EvaluationController {
             const student = await Student.findOneById(studentId)
            
             const evaluation = await Evaluation.create(
-                {
+               {
                 ...body,
                 student
-                }       
                 //teacher
+                }
             )
 
             evaluation.save()

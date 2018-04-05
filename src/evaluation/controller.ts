@@ -20,24 +20,26 @@ export default class EvaluationController {
     }
 
     
-    @Post('/students/:id([0-9]+)/evaluation')
+    @Post('/evaluation/student/:id([0-9]+)')
     async createEvaluation(
         @Param('id') studentId: number,
         @Body() body: Evaluation
     ) {
-
-        try{
+        
             const student = await Student.findOneById(studentId)
-            const evaluation = await Evaluation.create({
+           
+            const evaluation = await Evaluation.create(
+                {
                 ...body,
-                student,
+                student
+                }       
                 //teacher
-            }).save()
+            )
+
+            evaluation.save()
+       
             return evaluation
-        }
-        catch(error){
-            return error.message
-        }
+
     }
 
 

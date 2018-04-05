@@ -8,13 +8,13 @@ export default class StudentController {
 
     @Get('/students')
     async getAllStudents() {
-        return await Student.find()
+        return await Student.find({ relations: ["Batch"] })
     }
     @Get('/students/:id([0-9]+)')
     async getSingleStudent(
         @Param("id") id: number
     ) {
-        const student = await Student.findOneById(id)
+        const student = await Student.findOneById(id, {relations:["batch"]})
         if (!student) throw new NotFoundError("No student found")
         return student
     }

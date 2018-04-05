@@ -3,7 +3,7 @@ import { IsString, IsDate, IsDateString } from 'class-validator'
 import Teacher from '../teacher/entity'
 import Student from '../student/entity'
 
-export type Grade = 'red' | 'yellow' | 'green'
+//export type Grade = 'red' | 'yellow' | 'green'
 
 
 @Entity()
@@ -12,11 +12,12 @@ export default class Evaluation extends BaseEntity {
     @PrimaryGeneratedColumn()
     id?: number
 
-    @Column()
-    grade: Grade
+    @IsString()
+    @Column('text', { nullable: true })
+    grade: string
 
     @IsString()
-    @Column('text')
+    @Column('text', { nullable: true })
     remark: string
 
     //Needs a proper default date date.now()
@@ -25,10 +26,10 @@ export default class Evaluation extends BaseEntity {
     // createdDate: Date;
 
     @IsString()
-    @Column('text')
+    @Column('text', { nullable: true })
     date: string
 
-    @ManyToOne(_ => Teacher, teacher => teacher.evaluations)
+    @ManyToOne(_ => Teacher, teacher => teacher.evaluations, { nullable: true } )
     teacher: Teacher
 
     @ManyToOne(_ => Student, student => student.evaluations)

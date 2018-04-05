@@ -7,15 +7,16 @@ export default class BatchController {
 
     @Get('/batch')
     async getAllBatchs() {
-        return await Batch.find()
+        const batch =  await Batch.find()
+        return batch
     }
     @Get('/batch/:id([0-9]+)')
-    async getSingleBatch(
+         getSingleBatch(
         @Param("id") id: number
     ) {
-        const batch = await Batch.findOneById(id)
-        if (!batch) throw new NotFoundError("No batch found")
-        return batch
+        return Batch.findOneById(id)
+        // if (!batch) throw new NotFoundError("No batch found")
+        // return batch
     }
 
     @Post('/batch')

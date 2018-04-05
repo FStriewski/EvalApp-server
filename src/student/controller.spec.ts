@@ -26,7 +26,7 @@ describe('StudentController', () => {
             .expect(200)
     })
 
-    test('POST /batch/1/students', async () => {
+    test('POST /batch/1', async () => {
 
         const target = {
             name: "Tim Smart",
@@ -34,7 +34,7 @@ describe('StudentController', () => {
         }
 
         const response = await request(await app.callback())
-            .post('/batch/1/students')
+            .post('/batch/1')
             .send(target)
             .expect(200)
     })

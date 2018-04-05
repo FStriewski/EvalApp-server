@@ -20,7 +20,7 @@ export default class StudentController {
     }
 
 
-    @Post('/batch/:id([0-9]+)/students')
+    @Post('/batch/:id([0-9]+)')
     async createStudent(
         @Param('id') batchId: number,
         @Body() body: Student

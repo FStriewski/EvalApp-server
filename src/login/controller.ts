@@ -23,7 +23,7 @@ export default class LogInController {
     ) {
         const teacher = await Teacher.findOne({ where: { email } })
 
-        if (!teacher) throw new BadRequestError('A user with this name does not exist')
+        if (!teacher) throw new BadRequestError('A teacher with this name does not exist')
 
         if (!await teacher.checkPassword(password)) throw new BadRequestError('The password is not correct')
 

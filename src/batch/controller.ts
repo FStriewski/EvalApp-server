@@ -1,4 +1,4 @@
-import { JsonController, Get, NotFoundError, Param, Post, Body, Put } from "routing-controllers";
+import { JsonController, Get, NotFoundError, Param, Post, Body, Put, Delete } from "routing-controllers";
 import Batch from './entity'
 import Student from '../student/entity'
 
@@ -52,4 +52,18 @@ export default class BatchController {
 
         return Batch.merge(batch, update).save()
     }
+
+    @Delete('/batch/:id([0-9])')
+    async deleteBatch(
+        @Param("id") id: number,
+    ){
+        try {
+            console.log("Deleting...")
+            Batch.removeById(id)
+            return id
+        }
+        catch (e) { return e.message } 
+    }
 }
+
+

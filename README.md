@@ -2,6 +2,8 @@
 # Student Evaluation App
 The purpose of the app is to give teachers a tool to manage classes and students. The app allows you to create new classes, add students, evaluate students and pick a random student for a test, based on his past results (weighted random selection). I build this app for my final assignment at Codaisseur. 
 
+
+
 ## 1. Functionality:
 
 ### Frontend: 
@@ -69,6 +71,7 @@ Same as frontend, run "yarn install" for the dependencies. Afterwards run "nodem
 
 ### Database: 
 I'm running a docker container (port 5432) with a Postgres DB. A local DB should work as well.
+
 
 
 ## 3. Copyright etc.
